@@ -3,27 +3,27 @@ pipeline {
     stages{
         stage("pull code"){
             steps{
-                touch code
+                sh 'touch code'
             }
         }
          stage("Testing...."){
             steps{
-                touch testing
+                sh 'touch testing'
             }
          }
          stage("building...."){
             steps{
-                touch build
+                sh 'touch build'
             }
          }
          stage("Deploying code....."){
             steps{
-                touch deploy
+                sh 'touch deploy'
             }
          }
          stage("releasing...."){
             steps{
-                touch release
+                sh 'touch release'
             }
         }
     }
