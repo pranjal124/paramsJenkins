@@ -1,21 +1,25 @@
 pipeline {
-    agent any
-    parameters {
-       string 'JDK_VERSION'
-       choice choices: ['Dev', 'Test', 'Prod'], name: 'Build_ENV'
-       password name: 'DB_Password', defaultValue: 'welcome1', description: 'database password'
-       text name: 'DESC'
-       booleanParam name: 'Deploy', description: 'do want to deploy the code on target environment'
-
-    }
+    agent slave-2
     stages{
-        stage("print parameters"){
+        stage("pull code"){
             steps{
-                echo "Java Version: ${params.JDK_VERSION}"
-                echo "Build Environment: ${params.Build_ENV}"
-                echo "Db Password: ${params.DB_Password}"
-                echo "Description: ${params.DESC}"
-                echo "Deploy: ${params.Deploy}"
+                touch code
+            }
+         stage("Testing...."){
+            steps{
+                touch testing
+            }
+         stage("building...."){
+            steps{
+                touch build
+            }
+         stage("Deploying code....."){
+            steps{
+                touch deploy
+            }
+         stage("releasing...."){
+            steps{
+                touch release
             }
         }
     }
